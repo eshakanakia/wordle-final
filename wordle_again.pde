@@ -33,8 +33,14 @@ void keyPressed() {
     }
   }
   for (int i = 0; i < 4; i++) {
-    
+    for (int j = 0; j < 4; j++) {
+      if (word[i] == word[j]) {
+        println('Y');
+      } else {
+        println('N');
+      }
     }
+  }
   for (int j = 0; j < 5; j++) {
     print(guess[j]);
   }
