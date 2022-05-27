@@ -1,0 +1,72 @@
+import java.util.*;
+String[] words = {"skunk", "adieu", "ouija", "squab", "pzazz", "ivory", "vixen", "haiku", "blitz", "crypt"};
+int index = int(random(words.length));
+String word1 = words[index];
+//String word1 = "skunk";
+char[] word = word1.toCharArray();
+
+char[] guess = new char[]{'_', '_', '_', '_', '_'};
+
+void setup() {
+}
+void draw() {
+}
+
+void keyPressed() {
+  if (65<=keyCode && keyCode <=90) {
+    for (int i = 4; i >= 0; i--) {
+      if (guess[i] != '_' && i != 4) {
+        guess[i+1] = key;
+        break;
+      } else if (i == 0 && guess[i] == '_') {
+        guess[i] = key;
+        break;
+      }
+    }
+  }
+  if (key == BACKSPACE) {
+    for (int i = 4; i >= 0; i--) {
+      if (guess[i] != '_') {
+        guess[i] = '_';
+        break;
+      }
+    }
+  }
+ 
+  
+  for (int j = 0; j < 5; j++) {
+    print(guess[j]);
+  }
+  println("");
+  //if (keyCode == ENTER || keyCode == RETURN) {
+  //  //if(guess.length<5){
+  //  //  println("Your gues is too short. Try again!");
+  //  //}
+  //}
+  
+  //take the first letter of the guess and compare it to each letter of the word
+  //if the indexes are the same, say Y
+  //if the letter is there but the indexes aren't the same, say maybe
+  //if the letter is not there, say N
+  for (int i = 0; i < word.length; i++) {
+   for (int j = 0; j < word.length; j++) {
+     //WORKS
+      if (guess[i] == word[i]) {
+        print('Y');
+        break;
+      }
+       if(guess[i] == word[j]){
+        //doesn't work
+        print("?");
+        break;
+      }
+      else {
+        //WORKS
+        print('N');
+        break;
+      }
+     
+    }
+  }
+  println("");
+}
